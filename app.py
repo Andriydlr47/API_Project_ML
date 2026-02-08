@@ -56,6 +56,14 @@ app = FastAPI(
 
 # Endpoints
 
+@app.get("/health")
+def health():
+    """Endpoint de salud de la API"""
+    return {
+        "status": "ok",
+        "model_uri": MODEL_URI
+    }
+
 @app.post("/predict")
 def predict(data: EnergiaInput):
     """
@@ -78,3 +86,4 @@ def predict(data: EnergiaInput):
             status_code=500,
             detail=f"Error durante la predicción: {str(e)}"
         )
+

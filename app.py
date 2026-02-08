@@ -7,6 +7,15 @@ import pandas as pd
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # o tu dominio frontend
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Cargar variables de entorno
 
@@ -86,4 +95,5 @@ def predict(data: EnergiaInput):
             status_code=500,
             detail=f"Error durante la predicción: {str(e)}"
         )
+
 

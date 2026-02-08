@@ -57,7 +57,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # o tu dominio frontend
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -95,6 +95,7 @@ def predict(data: EnergiaInput):
             status_code=500,
             detail=f"Error durante la predicción: {str(e)}"
         )
+
 
 
 
